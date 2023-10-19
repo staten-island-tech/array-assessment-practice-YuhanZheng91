@@ -86,12 +86,17 @@ const titles = [
 
 //Array of authors and the book they wrote
 //"--- wrote --- in ---"
+//books.forEach((el)=> console.log(el.name, "by", el.authorFirst, el.authorLast));
+books.forEach((el)=> console.log(el.authorFirst, el.authorLast, "wrote", el.name, "in", el.publishDate));
 
 //Sort books from oldest to most recent
+
 
 //sort books alphabetically
 
 //Find who wrote War and Peace
+const authorofwarandpeace = books.filter((books)=> books.name === "War and Peace");
+console.log(authorofwarandpeace);
 
 //how many books were written before 1900?
 
