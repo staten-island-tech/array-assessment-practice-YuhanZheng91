@@ -90,7 +90,10 @@ const titles = [
 books.forEach((el)=> console.log(el.authorFirst, el.authorLast, "wrote", el.name, "in", el.publishDate));
 
 //Sort books from oldest to most recent
-
+function sortbooksdate(){
+  
+}
+sortbooksdate();
 
 //sort books alphabetically
 
@@ -101,7 +104,10 @@ console.log(authorofwarandpeace);
 //how many books were written before 1900?
 
 //was there at least one book published within the last 100 years?
-
+const booksin100years = (el)=> (el.publishDate > 1923);
+console.log(booksin100years);
 //was every book published within the last 100 years?
 
 //print a list of books that "includes" the genre historical
+const historicalbooks = books.filter((el)=> el.genre == "historical");
+console.log(historicalbooks);
