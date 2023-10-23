@@ -86,7 +86,6 @@ const titles = [
 
 //Array of authors and the book they wrote
 //"--- wrote --- in ---"
-  //books.forEach((el)=> console.log(el.name, "by", el.authorFirst, el.authorLast));
 books.forEach((el)=> console.log(el.authorFirst, el.authorLast, "wrote", el.name, "in", el.publishDate));
 
 //Sort books from oldest to most recent
@@ -104,20 +103,35 @@ function sorttitlesalph(){
 sorttitlesalph();
 
 //Find who wrote War and Peace
-const authorofwarandpeace = books.filter((books)=> books.name === "War and Peace");
-console.log(authorofwarandpeace);
+const warAndPeace = books.find((book) => book.name === "War and Peace");
+if (warAndPeace){
+  console.log(`author of War and Peace: ${warAndPeace.authorFirst} ${warAndPeace.authorLast}`);
+}
 
 //how many books were written before 1900?
-const booksbefore1900 = books.filter((el)=> el.publishDate < 1900);
-console.log(booksbefore1900);
+const booksBefore1900 = books.filter((book) => book.publishDate < 1900);
+const numberofbooks1900 = booksBefore1900.length;
+console.log('here is the number of books published before 1900:', numberofbooks1900);
 
 //was there at least one book published within the last 100 years?
-  // const booksin100years = (el)=> (el.publishDate > 1923);
-  // console.log(booksin100years);
-books.find((el=> el.publishDate > 1923));
+const currentYear = new Date().getFullYear();
+const bookswithin100yrs = books.some((book) => currentYear - book.publishDate <= 100);
 
+if(bookswithin100yrs){
+  console.log('Yes, there is at least one book published within the last 100 years');
+} else {
+  console.log("No, there aren't any books published within the last 100 years");
+}
+ 
 //was every book published within the last 100 years?
+const withinLast100 = books.every((book)=> currentYear - book.publishDate <= 100);
+
+if(withinLast100) {
+  console.log("Yes, everybook is within the last 100 yrs");
+} else {
+  console.log("No, not every book was published within the last 100 years");
+}
 
 //print a list of books that "includes" the genre historical
-const historicalbooks = books.filter((el)=> el.genre == "historical");
-console.log(historicalbooks);
+const historicalBooks = books.filter((book)=> book.genre.includes("historical"));
+console.log(historicalBooks);
